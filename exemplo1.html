@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script lang="Javascript">
+        function pulaLinha()
+        {
+            document.write("<br>");
+        }
+        function mostraData(dia, mes, ano)
+        {
+            var dt, diasDaSemana;
+            dt = new Date(ano, mes, dia);
+            diasDaSemana = new Array(7);
+            diasDaSemana[0]="Dom";
+            diasDaSemana[1]="Seg";
+            diasDaSemana[2]="Ter";
+            diasDaSemana[3]="Qua";
+            diasDaSemana[4]="Qui";
+            diasDaSemana[5]="Sex";
+            diasDaSemana[6]="Sab";
+            document.write(dia + "/" + (mes+1) + "/" + ano + " | " + diasDaSemana[dt.getDay()] + "<br>");
+        }
+    </script>
+</head>
+<body>
+    <script lang="Javascript">
+        var hoje, inicio;
+        hoje = new Date(2008, 1, 5);
+        document.write(hoje);
+        pulaLinha();
+        mostraData(hoje.getDate(), hoje.getMonth(), hoje.getFullYear());
+        document.write(hoje.getDate());
+        pulaLinha();
+        document.write(hoje.getMonth());
+        pulaLinha();
+        document.write(hoje.getFullYear());
+        pulaLinha();
+        document.write(hoje.getDay());
+        hoje.setDate(17);
+        pulaLinha();
+        document.write(hoje);
+        pulaLinha();
+        with (hoje)
+        {
+        mostraData(getDate(), getMonth(), getFullYear());
+        }
+
+        inicio = new Date(2023, 8, 1);
+        fim = new Date(2023, 9, 1);
+        fim.setDate(0);
+        with (inicio)
+        {
+        mostraData(getDate(), getMonth(), getFullYear());
+        }
+        with (fim)
+        {
+        mostraData(getDate(), getMonth(), getFullYear());
+        }
+        document.write("-----------<br>");
+        do
+        {
+            with (inicio)
+            {
+              mostraData(getDate(), getMonth(), getFullYear());
+            }
+            inicio.setDate(inicio.getDate()+1);
+        }
+        while (inicio.getDate() != fim.getDate());
+
+
+
+
+
+    </script>
+</body>
+</html>
